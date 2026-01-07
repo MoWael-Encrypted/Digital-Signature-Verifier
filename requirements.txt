@@ -1,5 +1,25 @@
+# Digital Signature Verifier - Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core Framework
 Flask==3.0.0
-flask-cors==4.0.0
-python-magic-bin==0.4.14
-cryptography==41.0.7
 Werkzeug==3.0.1
+Jinja2==3.1.6
+itsdangerous==2.2.0
+click==8.3.1
+blinker==1.9.0
+MarkupSafe==3.0.3
+
+# CORS Support
+Flask-Cors==4.0.0
+
+# Cryptography
+cryptography==41.0.7
+cffi==2.0.0
+pycparser==2.23
+
+# File Type Detection (Windows-compatible)
+python-magic-bin==0.4.14
+
+# Windows Console Colors
+colorama==0.4.6

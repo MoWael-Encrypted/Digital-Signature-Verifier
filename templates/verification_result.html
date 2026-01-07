@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% set active_page = "verify_signature" %}
+
+{% block content %}
+<article class="card">
+    <div class="card-header {% if is_valid %}bg-success{% else %}bg-danger{% endif %} text-white">
+        <h1>Signature Verification Result</h1>
+    </div>
+
+    <div class="card-body">
+        {% if is_valid %}
+        <section class="text-center mb-4">
+            <div class="verification-icon valid-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
+                    class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                </svg>
+            </div>
+            <h2 class="text-success">Valid Signature</h2>
+        </section>
+
+        <div class="alert alert-success">
+            <p>The signature for <strong>{{ document_name }}</strong> is valid. This document is authentic and has not
+                been tampered with.</p>
+        </div>
+
+        <section class="card mb-4" style="border: 1px solid var(--primary-color);">
+            <div class="card-header">
+                <h3 class="h5 mb-0">What This Means</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>The document was signed by the owner of the private key</li>
+                    <li>The content has not been modified since signing</li>
+                    <li>The cryptographic verification passed successfully</li>
+                </ul>
+            </div>
+        </section>
+        {% else %}
+        <section class="text-center mb-4">
+            <div class="verification-icon invalid-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
+                    class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                </svg>
+            </div>
+            <h2 class="text-danger">Invalid Signature</h2>
+        </section>
+
+        <div class="alert alert-danger">
+            <p>The signature for <strong>{{ document_name }}</strong> is invalid. This document may have been tampered
+                with.</p>
+        </div>
+
+        <section class="card mb-4" style="border: 1px solid var(--primary-color);">
+            <div class="card-header">
+                <h3 class="h5 mb-0">Possible Reasons</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>The document content was modified after signing</li>
+                    <li>The wrong public key was used for verification</li>
+                    <li>The signature file is corrupted</li>
+                    <li>The private key used for signing doesn't match this public key</li>
+                </ul>
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="text-center">
+            <a href="{{ url_for('verify_signature_route') }}" class="btn btn-primary">Verify Another Document</a>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary ms-2">Return Home</a>
+        </section>
+    </div>
+</article>
+{% endblock %}

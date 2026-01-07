@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% set active_page = "sign_document" %}
+
+{% block content %}
+<style>
+    #signatureResult {
+        display: none;
+    }
+
+    .signature-display {
+        font-family: monospace;
+        background-color: #1a1a1a;
+        color: var(--primary-color);
+        padding: 15px;
+        border: 1px solid var(--primary-color);
+        border-radius: 5px;
+        overflow-wrap: break-word;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<article class="card">
+    <header class="card-header border-bottom border-success">
+        <h1 class="h3 mb-0 text-success">Sign a Document</h1>
+    </header>
+
+    <div class="card-body">
+        <div id="signForm">
+            <section>
+                <h2 class="h5">Document Signing Process</h2>
+                <p>Create a digital signature for your document using your private key.</p>
+                <div class="alert alert-info">
+                    <strong>Note:</strong> You'll need the corresponding public key to verify this signature later.
+                </div>
+            </section>
+
+            <form id="signDocumentForm" class="mt-4">
+                <div class="mb-3">
+                    <label for="document" class="form-label">Document to Sign</label>
+                    <input type="file" class="form-control" id="document" required>
+                    <div class="form-text">Supported formats: PDF, DOCX, TXT, JPG, PNG</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="private_key" class="form-label">Your Private Key</label>
+                    <input type="file" class="form-control" id="private_key" required>
+                    <div class="form-text">Upload the private key (.pem) you generated</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="signBtn">
+                    <span class="spinner-border spinner-border-sm d-none" id="signSpinner"></span>
+                    Sign Document
+                </button>
+            </form>
+        </div>
+
+        <div id="signatureResult" class="mt-4">
+            <div class="alert alert-success">
+                Document signed successfully!
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Digital Signature</label>
+                <div class="signature-display" id="signatureDisplay"></div>
+                <button type="button" class="btn btn-primary mt-2" id="copySignature">
+                    Copy Signature
+                </button>
+                <button type="button" class="btn btn-success mt-2" id="downloadSignature">
+                    Download Signature File
+                </button>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary" id="signAnother">
+                Sign Another Document
+            </button>
+        </div>
+    </div>
+</article>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.3.2/jsencrypt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/static/js/sign_document.js"></script>
+{% endblock %}

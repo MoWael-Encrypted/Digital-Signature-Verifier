@@ -1,0 +1,3 @@
+This is a sample challenge. 
+Find the hidden message in the 'suspect.txt' file by verifying its signature with the provided public key.
+Hint: The signature was created with the private key corresponding to 'public.pem'.

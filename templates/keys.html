@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keys Generated - Signature Verifier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .key-card {
+            transition: transform 0.2s;
+        }
+        .key-card:hover {
+            transform: translateY(-5px);
+        }
+        .private-key {
+            border-left: 5px solid #dc3545;
+        }
+        .public-key {
+            border-left: 5px solid #0d6efd;
+        }
+        .security-alert {
+            border-left: 5px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white">
+        <nav class="container navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="/">Signature Verifier</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="generate_keys.html">Generate Keys</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sign_document.html">Sign Document</a></li>
+                    <li class="nav-item"><a class="nav-link" href="verify_signature.html">Verify Signature</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="challenges.html">Challenges</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-4">
+        <article class="card shadow">
+            <header class="card-header bg-success text-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="h4 mb-0">Keys Generated Successfully</h1>
+                    <span class="badge bg-light text-success">Secure</span>
+                </div>
+            </header>
+            
+            <div class="card-body">
+                <div class="alert alert-success d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                    <div>
+                        Your RSA key pair has been generated successfully! These keys will only be available during this session.
+                    </div>
+                </div>
+
+                <div class="alert alert-warning security-alert">
+                    <h2 class="h5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-triangle-fill me-2" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg> Security Notice</h2>
+                    <ul class="mb-0">
+                        <li>These keys are <strong>not stored</strong> on our servers</li>
+                        <li>You <strong>must download both keys</strong> now - they won't be available later</li>
+                        <li>Store your private key <strong>in a secure location</strong></li>
+                        <li>Never share your private key with anyone</li>
+                    </ul>
+                </div>
+
+                <section class="mb-4">
+                    <h2 class="h5 mb-3">Download Your Key Pair</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 private-key key-card shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <h3 class="h6 card-title mb-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill text-danger me-2" viewBox="0 0 16 16">
+                                                <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                            </svg>
+                                            Private Key
+                                        </h3>
+                                        <span class="badge bg-danger">Confidential</span>
+                                    </div>
+                                    <p class="card-text text-muted small">Used for signing documents. Keep this secure and never share it.</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="/download_key/private" class="btn btn-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download me-2" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                            </svg>
+                                            Download Private Key (private.pem)
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 public-key key-card shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <h3 class="h6 card-title mb-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill text-primary me-2" viewBox="0 0 16 16">
+                                                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+                                            </svg>
+                                            Public Key
+                                        </h3>
+                                        <span class="badge bg-primary">Shareable</span>
+                                    </div>
+                                    <p class="card-text text-muted small">Used for verifying signatures. Share this with anyone who needs to verify your documents.</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="/download_key/public" class="btn btn-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download me-2" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                            </svg>
+                                            Download Public Key (public.pem)
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="text-center mt-4">
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="/sign_document" class="btn btn-lg btn-outline-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill me-2" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                            </svg>
+                            Sign a Document
+                        </a>
+                        <a href="/generate_keys" class="btn btn-lg btn-outline-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat me-2" viewBox="0 0 16 16">
+                                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                                <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                            </svg>
+                            Generate New Keys
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-dark text-white py-3 mt-4">
+        <div class="container text-center">
+            <p class="mb-0">Signature Verifier - Cyber Forensics Lab</p>
+            <p class="small text-muted mb-0">Keys are generated client-side and never stored on our servers</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add confirmation for generating new keys
+        document.querySelector('a[href="/generate_keys"]').addEventListener('click', function(e) {
+            if (!confirm('Generating new keys will make your current keys unavailable. Have you downloaded both keys?')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

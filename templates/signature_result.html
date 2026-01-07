@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% set active_page = "sign_document" %}
+
+{% block content %}
+<article class="card">
+    <header class="card-header bg-success text-white">
+        <h1>Document Signed Successfully</h1>
+    </header>
+
+    <div class="card-body">
+        <section class="alert alert-success">
+            <p>Your document has been successfully signed.</p>
+        </section>
+
+        <section class="card mb-4" style="border: 1px solid var(--primary-color);">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Document Information</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Document:</strong> {{ document_name }}</p>
+                <p><strong>Signature File:</strong> {{ signature_name }}</p>
+            </div>
+        </section>
+
+        <section class="mb-4">
+            <h2 class="h5">Next Steps</h2>
+            <p>Download the signature file and keep it with your document. You'll need both for verification.</p>
+            <div class="d-grid gap-2 col-md-6 mx-auto">
+                <a href="{{ url_for('download_signature') }}" class="btn btn-primary btn-lg">Download Signature</a>
+            </div>
+        </section>
+
+        <section class="text-center">
+            <a href="{{ url_for('verify_signature_route') }}" class="btn btn-outline-primary">Verify a Signature</a>
+            <a href="{{ url_for('sign_document') }}" class="btn btn-outline-secondary ms-2">Sign Another Document</a>
+        </section>
+    </div>
+</article>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+
+{% block content %}
+<section class="hero p-5 rounded mb-4">
+    <h1 class="display-4">Digital Signature Verifier</h1>
+    <p class="lead">Verify document authenticity using RSA cryptography </p>
+    <hr class="my-4">
+    <p>This tool helps you understand digital signatures through hands-on experience with key generation, document
+        signing, and verification.</p>
+</section>
+
+<section class="tools">
+    <div class="row g-4">
+        <article class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title h5">Generate Keys</h2>
+                    <p>Create RSA key pairs for digital signatures</p>
+                    <a href="{{ url_for('generate_keys_route_get') }}" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title h5">Sign Documents</h2>
+                    <p>Create digital signatures for your files</p>
+                    <a href="{{ url_for('sign_document') }}" class="btn btn-primary">Sign Now</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title h5">Verify Signatures</h2>
+                    <p>Check document authenticity</p>
+                    <a href="{{ url_for('verify_signature_route') }}" class="btn btn-primary">Verify</a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <article class="card mt-4">
+        <div class="card-body">
+            <h2 class="card-title h5">Forensic Challenges</h2>
+            <p>Test your skills with our signature verification challenges</p>
+            <a href="{{ url_for('forensic_challenges') }}" class="btn btn-primary">View Challenges</a>
+        </div>
+    </article>
+</section>
+{% endblock %}

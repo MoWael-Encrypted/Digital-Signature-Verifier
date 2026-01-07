@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% set active_page = "challenges" %}
+
+{% block content %}
+<article class="card">
+    <header class="card-header border-bottom border-success">
+        <h1 class="h3 mb-0 text-success">Forensic Challenges</h1>
+    </header>
+
+    <div class="card-body">
+        <section>
+            <h2 class="h5">Test Your Skills</h2>
+            <p>These challenges help you practice identifying authentic and tampered documents.</p>
+        </section>
+
+        <section class="mt-4">
+            <h2 class="h5">Available Challenges</h2>
+            {% if challenges %}
+            <div class="list-group">
+                {% for challenge in challenges %}
+                <a href="{{ url_for('challenge', challenge_id=challenge.id) }}"
+                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="h6 mb-1">{{ challenge.name }}</h3>
+                        <div class="text-muted small">{{ challenge.description[:100] }}...</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">View</span>
+                </a>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="alert alert-warning">
+                No challenges available at the moment. Check back later!
+            </div>
+            {% endif %}
+        </section>
+    </div>
+</article>
+{% endblock %}

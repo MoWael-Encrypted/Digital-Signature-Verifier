@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% set active_page = "generate_keys" %}
+
+{% block content %}
+<style>
+    #keyDisplay {
+        display: none;
+    }
+
+    .key-area {
+        font-family: 'Courier New', monospace;
+        white-space: pre-wrap;
+        background-color: #1a1a1a;
+        color: var(--primary-color);
+        padding: 15px;
+        border: 1px solid var(--primary-color);
+        border-radius: 5px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<article class="card">
+    <header class="card-header border-bottom border-success">
+        <h1 class="h3 mb-0 text-success">Generate RSA Key Pair</h1>
+    </header>
+
+    <div class="card-body">
+        <form id="keyGenForm">
+            <section>
+                <h2 class="h5">About Key Pairs</h2>
+                <p>RSA uses a public/private key system. The private key signs documents, while the public key verifies
+                    signatures.</p>
+                <div class="alert alert-danger">
+                    <strong>Important:</strong> Never share your private key. The public key can be freely distributed.
+                </div>
+            </section>
+
+            <section class="mt-4">
+                <h2 class="h5">Key Parameters</h2>
+                <div class="row mb-3">
+                    <label for="keySize" class="col-sm-3 col-form-label">Key Size (bits)</label>
+                    <div class="col-sm-9">
+                        <select class="form-select" id="keySize">
+                            <option value="2048" selected>2048 (Recommended)</option>
+                            <option value="1024">1024</option>
+                            <option value="3072">3072</option>
+                            <option value="4096">4096</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <div id="keyDisplay" class="mt-4">
+                <div class="alert alert-success">
+                    Keys generated successfully!
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Public Key</label>
+                    <div class="key-area" id="publicKeyDisplay"></div>
+                    <button type="button" class="btn btn-primary mt-2" id="copyPublicKey">
+                        Copy Public Key
+                    </button>
+                    <button type="button" class="btn btn-success mt-2" id="downloadPublicKey">
+                        Download Public Key
+                    </button>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Private Key</label>
+                    <div class="key-area" id="privateKeyDisplay"></div>
+                    <button type="button" class="btn btn-danger mt-2" id="copyPrivateKey">
+                        Copy Private Key
+                    </button>
+                    <button type="button" class="btn btn-warning mt-2" id="downloadPrivateKey">
+                        Download Private Key
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg mt-4" id="generateBtn">
+                <span class="spinner-border spinner-border-sm d-none" id="generateSpinner"></span>
+                Generate Key Pair
+            </button>
+        </form>
+    </div>
+</article>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.3.2/jsencrypt.min.js"></script>
+<script src="/static/js/generate_keys.js"></script>
+{% endblock %}

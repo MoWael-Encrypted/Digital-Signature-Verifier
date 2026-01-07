@@ -1,0 +1,168 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.container {
+    max-width: 1140px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    font-weight: 600;
+}
+
+/* File Upload Styles */
+.file-upload {
+    margin-bottom: 1.5rem;
+}
+
+.drop-area {
+    border: 2px dashed #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.drop-area.highlight {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.file-preview {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.file-preview.has-file {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.file-preview.has-error {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Verification Results */
+.verification-icon {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite;
+}
+
+.valid-icon {
+    background-color: rgba(25, 135, 84, 0.1);
+    color: #198754;
+}
+
+.invalid-icon {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Challenge Cards */
+.challenge-card {
+    transition: all 0.3s ease;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    h4 {
+        font-size: 1.4rem;
+    }
+    
+    .drop-area {
+        padding: 15px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.verification-icon, .alert, .card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Spacing utilities */
+.mt-6 {
+    margin-top: 4rem;
+}
+
+/* Flash messages */
+.alert {
+    border-radius: 4px;
+}
